@@ -1,5 +1,6 @@
 console.log("This is exercise 6");
 
+
 //1
 let p1 = prompt("Enter your age");
 let age = parseInt(p1);
