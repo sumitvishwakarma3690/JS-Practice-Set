@@ -4,8 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practice-set-8</title>
+    <style>
+         body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .bookmark {
+      background-color: #e9ecef;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-left: 5px solid #007bff;
+    }
+
+    .bookmark a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .bookmark button {
+      float: right;
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    </style>
 </head>
-<body>
+<body onload="displayBookmarks()">
+
     <!-- <div class="container">
         <h1>This is Practice-set-8</h1>
     </div>
@@ -13,9 +79,18 @@
     <button id="btn2">Button 2</button>
     <button id="btn3">Button 3</button> -->
 
-    <a href="javascript:alert('Hello, this is a bookmark!');">Bookmark Me</a>
+    <!--2-->
+  <div class="container">
+    <h1>Favorite Bookmarks</h1>
 
+    <form onsubmit="return saveBookmark()">
+      <input type="text" id="title" placeholder="Website Title" required>
+      <input type="url" id="url" placeholder="https://example.com" required>
+      <button type="submit">Save Bookmark</button>
+    </form>
 
+    <div id="bookmarks"></div>
+  </div>
     <script src="p2.js"></script>
 </body>
 </html>
