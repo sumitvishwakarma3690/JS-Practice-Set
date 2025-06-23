@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookmark Manager</title>
+</head>
+<body>
+  <div class="container">
+    <h2>My Bookmarks</h2>
+    <input type="text" id="title" placeholder="Website Title">
+    <input type="url" id="url" placeholder="https://example.com">
+    <button id="saveBtn">Add Bookmark</button>
+    <div id="list"></div>
+  </div>
+
+  <script>
+    const title = document.getElementById("title");
+    const url = document.getElementById("url");
+    const list = document.getElementById("list");
+    const saveBtn = document.getElementById("saveBtn");
+
+    // Load bookmarks when page opens
+    showBookmarks();
+
+    // Add new bookmark
+    saveBtn.addEventListener("click", () => {
+      if (!title.value || !url.value) return alert("Enter both fields");
+
+      const bookmark = { title: title.value, url: url.value };
+      const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+      bookmarks.push(bookmark);
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      title.value = "";
+      url.value = "";
+      showBookmarks();
+    });
+
+    // Show all bookmarks
+    function showBookmarks() {
+      const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+      list.innerHTML = "";
+      bookmarks.forEach((bm, index) => {
+        list.innerHTML += `
+          <div class="bookmark">
+            <a href="${bm.url}" target="_blank">${bm.title}</a>
+            <button class="delete" onclick="deleteBookmark(${index})">Delete</button>
+          </div>
+        `;
+      });
+    }
+
+    // Delete bookmark
+    function deleteBookmark(index) {
+      const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+      bookmarks.splice(index, 1);
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      showBookmarks();
+    }
+  </script>
+</body>
+</html>

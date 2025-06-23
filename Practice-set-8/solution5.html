@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Bulb effect</title>
+    <style>
+        .container{
+            margin-top: 20px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid red;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+        }
+        .bulb{
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: none;
+            text-align: center;
+            transition: all 0.3 ease;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+        .glow{
+            background-color: yellow;
+            box-shadow: 0 0 20px 10px yellow;
+        }
+        #btn{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--5-->
+    <div class="container">
+        <h2>Click the button to turn ON/OFF the bulb</h2>
+        <div class="bulb" id="bulb">Bulb</div>
+        <button id="btn">Glow Bulb</button>
+    </div>
+
+    <script>
+        let bulb = document.getElementById("bulb")
+        let myBtn = document.getElementById("btn")
+
+        myBtn.addEventListener('click', ()=>{
+            bulb.classList.toggle("glow"); 
+        });
+    </script>
+</body>
+</html>
