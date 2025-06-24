@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About LocalStorage in js</title>
+</head>
+<body>
+    
+    <script>
+        // localStorage: means a local storage on the internet that stores data on the user on the web
+        if(localStorage.getItem("name")) {
+            a = localStorage.getItem("name")
+            document.write("Welcome " + a)
+        }
+        else{
+            let a = prompt("Enter your name")
+            localStorage.setItem("name", a)
+            document.write("Welcome " + a)
+
+        }
+
+        // object, stringify, storing, parsing
+        let b = {
+            "harry": 1,
+            "rohan": 34
+        }
+        console.log(JSON.stringify(b))
+        let store = localStorage.setItem("guys", JSON.stringify(b))
+        let parsedS = JSON.parse(localStorage.getItem("guys"))
+        console.log(parsedS)
+
+    </script>
+</body>
+</html>
